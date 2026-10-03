@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <header class="game-header">
+      <h1>Tic Tac Toe</h1>
+    </header>
+
+    <main class="game-container">
+      <form class="player-form" id="player-setup-form">
+        <div class="form-row">
+          <div class="input-group">
+            <label id="playerOneLabel" for="playerOneInput">P1(X):</label>
+            <input
+              type="text"
+              id="playerOneInput"
+              placeholder="Enter Name"
+              value=""
+            />
+          </div>
+          <div class="input-group">
+            <label id="playerTwoLabel" for="playerTwoInput">P2(O):</label>
+            <input
+              type="text"
+              id="playerTwoInput"
+              placeholder="Enter Name"
+              value=""
+            />
+          </div>
+        </div>
+        <button type="submit" id="save-names-btn" class="save-btn">
+          Save Player Names
+        </button>
+      </form>
+
+      <section class="status-panel">
+        <div id="game-status" class="status-text">P1's Turn</div>
+      </section>
+
+      <section class="gameboard">
+        <button class="cell" data-index="0"></button>
+        <button class="cell" data-index="1"></button>
+        <button class="cell" data-index="2"></button>
+        <button class="cell" data-index="3"></button>
+        <button class="cell" data-index="4"></button>
+        <button class="cell" data-index="5"></button>
+        <button class="cell" data-index="6"></button>
+        <button class="cell" data-index="7"></button>
+        <button class="cell" data-index="8"></button>
+      </section>
+
+      <section class="controls">
+        <button id="reset-btn" class="control-btn">Reset Game</button>
+        <button id="new-game-btn" class="control-btn">New Game</button>
+      </section>
+    </main>
+  </body>
+</html>
