@@ -212,9 +212,9 @@ const game = (function () {
     });
   }
 
-  function updateNames(payload) {
-    playerOneLabel.textContent = `${payload.playerOne.name} (${payload.playerOne.marker.toUpperCase()})`;
-    playerTwoLabel.textContent = `${payload.playerTwo.name} (${payload.playerTwo.marker.toUpperCase()})`;
+  function updateNames(gameState) {
+    playerOneLabel.textContent = `${gameState.playerOne.name} (${gameState.playerOne.marker.toUpperCase()})`;
+    playerTwoLabel.textContent = `${gameState.playerTwo.name} (${gameState.playerTwo.marker.toUpperCase()})`;
   }
 
   function render(payload) {
@@ -222,12 +222,12 @@ const game = (function () {
     switch (payload.statusCode) {
       case 0:
         gameStatus.textContent = "Invalid Move!! Try Again.";
-        updateNames(payload);
+        updateNames(payload.gameState);
         break;
       case 1:
         updateBoard(payload.gameState.gameboard);
         gameStatus.textContent = `${payload.gameState.activePlayer}'s turn.`;
-        updateNames(payload);
+        updateNames(payload.gameState);
         break;
       case 2:
         updateBoard(payload.gameState.gameboard);
@@ -237,12 +237,12 @@ const game = (function () {
       case 3:
         updateBoard(payload.gameState.gameboard);
         gameStatus.textContent = `${payload.winner} has won!!!`;
-        updateNames(payload);
+        updateNames(payload.gameState);
         break;
       case 4:
         updateBoard(payload.gameState.gameboard);
         gameStatus.textContent = `${payload.gameState.activePlayer}'s turn.`;
-        updateNames(payload);
+        updateNames(payload.gameState);
         break;
       case 5:
         updateBoard(payload.gameState.gameboard);
