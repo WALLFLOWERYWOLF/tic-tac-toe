@@ -1,7 +1,10 @@
 const game = (function () {
   const gameboard = (function () {
     const board = [null, null, null, null, null, null, null, null, null];
+
+    // Return a new shallow copy of the board array to prevent direct mutation of the source data
     const getBoard = () => board.map((cell) => cell);
+
     const setBoard = (marker, index) => {
       board[index] = marker;
       return board;
@@ -119,6 +122,8 @@ const game = (function () {
       gameboard.clearBoard();
       return { statusCode: 4, gameState: state() };
     };
+
+    // Reset board for a new round but swap player markers (X/O) so players take turns going first
     const playAgain = () => {
       roundComplete = false;
       activeMarker = "x";
@@ -213,6 +218,7 @@ const game = (function () {
   }
 
   function render(payload) {
+    // Status Code Key: 0=Invalid, 1=Valid Move, 2=Tie, 3=Win, 4=Reset, 5=Play Again
     switch (payload.statusCode) {
       case 0:
         gameStatus.textContent = "Invalid Move!! Try Again.";
