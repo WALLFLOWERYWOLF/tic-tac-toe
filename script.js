@@ -38,55 +38,21 @@ const game = (function () {
     let activeMarker = "x";
     let roundComplete = false;
     function winChecker(board) {
-      if (
-        board[0] == activeMarker &&
-        board[1] == activeMarker &&
-        board[2] == activeMarker
-      ) {
-        return true;
-      } else if (
-        board[3] == activeMarker &&
-        board[4] == activeMarker &&
-        board[5] == activeMarker
-      ) {
-        return true;
-      } else if (
-        board[6] == activeMarker &&
-        board[7] == activeMarker &&
-        board[8] == activeMarker
-      ) {
-        return true;
-      } else if (
-        board[0] == activeMarker &&
-        board[3] == activeMarker &&
-        board[6] == activeMarker
-      ) {
-        return true;
-      } else if (
-        board[1] == activeMarker &&
-        board[4] == activeMarker &&
-        board[7] == activeMarker
-      ) {
-        return true;
-      } else if (
-        board[2] == activeMarker &&
-        board[5] == activeMarker &&
-        board[8] == activeMarker
-      ) {
-        return true;
-      } else if (
-        board[0] == activeMarker &&
-        board[4] == activeMarker &&
-        board[8] == activeMarker
-      ) {
-        return true;
-      } else if (
-        board[2] == activeMarker &&
-        board[4] == activeMarker &&
-        board[6] == activeMarker
-      ) {
-        return true;
-      }
+      const winCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+      return winCombinations.some((combination) => {
+        return combination.every((position) => {
+          return board[position] == activeMarker;
+        });
+      });
     }
     function tieChecker(board) {
       return !board.some((cell) => cell === null);
